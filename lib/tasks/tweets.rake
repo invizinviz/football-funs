@@ -13,15 +13,21 @@ namespace :tweets do
       config.auth_method = :oauth
     end
 
-    TweetStream::Client.new.track('Chelsea') do |status|
+    chelseafc = TweetStream::Client.new
+
+    # chelseafc.sitestream(['22910295'], :followings => false) do |status|
+    #   puts status.inspect
+    # end
+
+    chelseafc.follow(22910295, :followings => false) do |status|
 
       EM.run {
         client = Faye::Client.new('http://localhost:9292/faye')
 
-        puts "faye server ready #{client}"
+        # puts "faye server ready #{client}"
 
         client.subscribe('/tweets/new') do |message|
-          puts message.inspect
+          # puts message.inspect
         end
 
         client.publish('/tweets/new', 'name' => "#{status.user.name}", 'message' => "#{status.text}")
