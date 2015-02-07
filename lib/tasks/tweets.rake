@@ -14,15 +14,25 @@ namespace :tweets do
     end
 
     chelseafc = TweetStream::Client.new
+    arsenalfc = TweetStream::Client.new
 
-    chelseafc.follow(22910295) do |status|
+    
+    # EM.run {
 
-      EM.run {
+      chelseafc.follow(22910295) do |status|
         client = Faye::Client.new('http://localhost:9292/faye')
         client.publish('/tweets/chelsea', status)
-      }
+      end
 
-    end  
+      arsenalfc.follow(34613288) do |status|
+        client = Faye::Client.new('http://localhost:9292/faye')
+        client.publish('/tweets/arsenal', status)
+      end
+
+
+    # }
+
+
   end
 
 end

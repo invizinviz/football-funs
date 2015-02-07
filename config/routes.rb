@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'teams/index'
   get 'chelsea' => 'teams#chelsea'
+  get 'arcenal' => 'teams#arcenal'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

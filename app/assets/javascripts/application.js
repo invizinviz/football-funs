@@ -17,27 +17,17 @@
 //= require_tree .
 
 $(function(){
-  // console.log('hi');
 
-  var client = new Faye.Client('http://localhost:9292/faye');
-  client.subscribe('/tweets/chelsea', function(tweet) {
-    // console.log(tweet);
+  var chelseafc = new Faye.Client('http://localhost:9292/faye');
+  chelseafc.subscribe('/tweets/chelsea', function(tweet) {
     var html = '<div class="row"><div class="col-md-6 col-md-offset-3 tweet"><a href="https://twitter.com/'+tweet.user.screen_name+'" target="_blank"><img src="' + tweet.user.profile_image_url + '" class="avatar pull-left"/></a><div class="names"><span class="full-name">' + tweet.user.name + ' </span><span class="username">@' +tweet.user.screen_name + '</span></div><div class="contents"><span class="text">' + tweet.text + '</span></div></div></div>';
-     $('#tweet-container').prepend(html);
+     $('#tweet-container-chelsea').prepend(html);
   });
 
-
-  // console.log('chelsea subscription: ' + subscription);
-
-  // subscription.then(function() {
-  //   console.log('Subscription is now active!');
-  // });
-
-  // var publication = client.publish('/tweets/chelsea', {text: 'Hi there'});
-
-  // publication.then(function() {
-  //   console.log('Message received by server!');
-  // }, function(error) {
-  //   alert('There was a problem: ' + error.message);
-  // });
+  var arsenalfc = new Faye.Client('http://localhost:9292/faye');
+  arsenalfc.subscribe('/tweets/arsenal', function(tweet){
+    var html = '<div class="row"><div class="col-md-6 col-md-offset-3 tweet"><a href="https://twitter.com/'+tweet.user.screen_name+'" target="_blank"><img src="' + tweet.user.profile_image_url + '" class="avatar pull-left"/></a><div class="names"><span class="full-name">' + tweet.user.name + ' </span><span class="username">@' +tweet.user.screen_name + '</span></div><div class="contents"><span class="text">' + tweet.text + '</span></div></div></div>';
+     $('#tweet-container-arcenal').prepend(html);
+  });
+  
 });
