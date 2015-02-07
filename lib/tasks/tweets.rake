@@ -15,29 +15,12 @@ namespace :tweets do
 
     chelseafc = TweetStream::Client.new
 
-    # chelseafc.sitestream(['22910295'], :followings => false) do |status|
-    #   puts status.inspect
-    # end
-
-    chelseafc.follow(22910295, :followings => false) do |status|
+    chelseafc.follow(22910295) do |status|
 
       EM.run {
         client = Faye::Client.new('http://localhost:9292/faye')
-
-        # puts "faye server ready #{client}"
-
-        client.subscribe('/tweets/new') do |message|
-          # puts message.inspect
-        end
-
-        client.publish('/tweets/new', 'name' => "#{status.user.name}", 'message' => "#{status.text}")
+        client.publish('/tweets/chelsea', status)
       }
-
-      
-      # puts "#{status.user.name}"
-      # puts "#{status.text}"
-
-      # Tweet.create(name: status.user.name, message: status.text)
 
     end  
   end
