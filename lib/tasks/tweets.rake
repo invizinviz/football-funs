@@ -12,25 +12,48 @@ namespace :tweets do
       config.oauth_token_secret = ENV['ACCESS_TOKEN_SECRET']
       config.auth_method = :oauth
     end
-
-    chelseafc = TweetStream::Client.new
-    arsenalfc = TweetStream::Client.new
-
     
     # EM.run {
 
-      chelseafc.follow(22910295) do |status|
-        client = Faye::Client.new('http://localhost:9292/faye')
-        client.publish('/tweets/chelsea', status)
-      end
 
+    
+
+    
+
+    def ars_tweets
+      arsenalfc = TweetStream::Client.new
       arsenalfc.follow(34613288) do |status|
+        puts "hi ars"
         client = Faye::Client.new('http://localhost:9292/faye')
         client.publish('/tweets/arsenal', status)
       end
+    end
 
+
+    def che_tweets
+      chelseafc = TweetStream::Client.new
+      chelseafc.follow(22910295) do |status|
+        puts "hi chelsea"
+        client = Faye::Client.new('http://localhost:9292/faye')
+        client.publish('/tweets/chelsea', status)
+      end
+      
+    end
+
+    threads = []
+    threads << Thread.new{ars_tweets}
+    threads << Thread.new{che_tweets}
+
+    threads.each { |thr| thr.join }
+
+    # ars_tr = Thread.new{ars_tweets}
+    # che_tr = Thread.new{che_tweets}
+
+    # ars_tr.join
+    # che_tr.join
 
     # }
+
 
 
   end
