@@ -11,15 +11,9 @@ namespace :tweets do
       config.oauth_token = ENV['ACCESS_TOKEN']
       config.oauth_token_secret = ENV['ACCESS_TOKEN_SECRET']
       config.auth_method = :oauth
-    end
-    
+    end    
+
     # EM.run {
-
-
-    
-
-    
-
     def ars_tweets
       arsenalfc = TweetStream::Client.new
       arsenalfc.follow(34613288) do |status|
@@ -37,7 +31,6 @@ namespace :tweets do
         client = Faye::Client.new('http://localhost:9292/faye')
         client.publish('/tweets/chelsea', status)
       end
-      
     end
 
     threads = []
@@ -46,15 +39,7 @@ namespace :tweets do
 
     threads.each { |thr| thr.join }
 
-    # ars_tr = Thread.new{ars_tweets}
-    # che_tr = Thread.new{che_tweets}
-
-    # ars_tr.join
-    # che_tr.join
-
     # }
-
-
 
   end
 
