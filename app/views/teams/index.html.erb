@@ -1,5 +1,10 @@
 <h1>Footbal Fans</h1>
 <p>Follow your team</p>
 
-<%= button_to 'Chelsea', chelsea_path, method: :get, form_class: "chelsea"  %>
-<%= button_to 'Arcenal', arsenal_path, method: :get, form_class: "arsenal"  %>
+<%#= button_to 'Chelsea', chelsea_path, method: :get, form_class: "chelsea"  %>
+<%#= button_to 'Arcenal', arsenal_path, method: :get, form_class: "arsenal"  %>
+
+<% @teams.each do |team| %>
+  <%= image_tag "#{team.img}" %> <br>
+  <%= link_to "#{team.name}", team_path(team) %> <br>
+<% end %>
