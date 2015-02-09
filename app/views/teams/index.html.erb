@@ -3,8 +3,17 @@
 
 <%#= button_to 'Chelsea', chelsea_path, method: :get, form_class: "chelsea"  %>
 <%#= button_to 'Arcenal', arsenal_path, method: :get, form_class: "arsenal"  %>
+<header>
+  <% @teams.each do |team| %>
+    <nav id="teams">
+      <ul>
+        <%= link_to team_path(team) do %> 
+        <li><%=image_tag "#{team.img}" %></li>
+      </ul>
+    </nav>
+   <% end %>
+  <% end %>
+</header>
 
-<% @teams.each do |team| %>
-  <%= image_tag "#{team.img}" %> <br>
-  <%= link_to "#{team.name}", team_path(team) %> <br>
-<% end %>
+<h3>Streem tweets</h3>
+<div class='container' id='tweet-container'></div>

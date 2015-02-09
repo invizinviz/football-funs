@@ -6,6 +6,7 @@ gem 'thin'
 # gem 'redis'
 gem 'tweetstream'
 gem 'twitter'
+gem 'yajl-ruby', require: 'yajl'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
