@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 gem 'faye-rails', '~> 2.0'
 gem 'thin'
 # gem "private_pub"
-gem 'redis'
-gem 'tweetstream'  
+# gem 'redis'
+gem 'tweetstream'
+gem 'twitter'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

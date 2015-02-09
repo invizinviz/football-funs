@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
 
-  $socket = ''
-  
+  # $socket = ''
+
   def index
     @teams = Team.all
   end
@@ -9,7 +9,8 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find params[:id]
     Tweet.publish_tweets(@team)
-    
+    # Tweet.team_tweets(@team)
+    @tweets = team_tweets(@team)
   end
 
   # def chelsea
@@ -31,4 +32,23 @@ class TeamsController < ApplicationController
   #   end
     
   # end
+
+
+  private 
+
+  def team_tweets(team)
+    twitter_client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_API_KEY']
+      config.consumer_secret     = ENV['TWITTER_API_SECRET']
+      config.access_token        = ENV['ACCESS_TOKEN']
+      config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
+    end
+    tweets = []
+    twitter_client.user_timeline(team.tweetstream_id).each do |tweet|
+      tweets << tweet
+    end
+    tweets
+  end
+
+  
 end
