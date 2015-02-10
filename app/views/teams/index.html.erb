@@ -1,8 +1,6 @@
 <h1>Footbal Fans</h1>
 <p>Follow your team</p>
 
-<%#= button_to 'Chelsea', chelsea_path, method: :get, form_class: "chelsea"  %>
-<%#= button_to 'Arcenal', arsenal_path, method: :get, form_class: "arsenal"  %>
 <header>
   <% @teams.each do |team| %>
     <nav id="teams">
@@ -15,5 +13,3 @@
   <% end %>
 </header>
 
-<h3>Streem tweets</h3>
-<div class='container' id='tweet-container'></div>

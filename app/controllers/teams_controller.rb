@@ -1,14 +1,14 @@
 class TeamsController < ApplicationController
 
-  # $socket = ''
 
   def index
     @teams = Team.all
+    Tweet.publish_tweets
   end
 
   def show
     @team = Team.find params[:id]
-    Tweet.publish_tweets(@team)
+    # Tweet.publish_tweets(@team)
     # Tweet.team_tweets(@team)
     @tweets = team_tweets(@team)
   end

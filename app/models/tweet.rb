@@ -2,42 +2,18 @@ class Tweet < ActiveRecord::Base
   belongs_to :team
 
 
-  def self.publish_tweets(team)
-    begin
+  def self.publish_tweets
       team_stream = TweetStream::Client.new
       client = Faye::Client.new('http://localhost:9292/faye')
-      # puts "created channel: #{client} :#{team.name} :#{team_stream.object_id}"
 
-      # team_stream.follow(team.tweetstream_id) do |status|
-      #   puts "tweet: #{team.name} #{team.channel}"
-      #   client.publish("/tweets/#{team.channel}", status)
-      #   puts "created channel: #{client}"
-      # end
-
-      # stored_tweets = []
-      # tweets_stored = 0
-
-      team_stream.track("@premierleague") do |tweet|
-
-        # stored_tweets << { username: tweet.attrs[:user][:screenname], tweet_text: tweet.text }
-        # tweets_stored += 1
-
-        # puts "tweet: #{team.name} #{team.channel}"
-
-        client.publish("/tweets/apl", tweet)
-        # puts "created channel: #{client.name}"
-
-        # stored_tweets << { username: tweet.attrs[:user][:screenname], tweet_text: tweet.text }
-        # tweets_stored += 1
-        # puts "#{tweets_stored} gathered"
-
-        # break if tweets_stored >= 10
-
+      team_stream.on_reconnect do |timeout, retries|
+        puts "Hit reconnect with timeout of #{timeout} for #{retries} retries"
       end
 
-    rescue Tweetstream::ReconnectError
-      puts "Tweetstream crashed due to reconnect error, will restart shortly"
-    end
+      team_stream.track("@premierleague") do |tweet|
+        puts "tweet: #{tweet.text} #{client}"
+        client.publish("/tweets/apl", tweet)
+      end
   end
 
 # Trying to get tweet fro tweeter  and stor to DB
@@ -54,7 +30,6 @@ class Tweet < ActiveRecord::Base
     topics = ["#{team.name}", "tea", "coffee"]
     stored_tweets = []
     tweets_stored = 0
-
 
     # Thread.new do 
     #   puts "Thread started for #{team.name}"
@@ -96,6 +71,4 @@ class Tweet < ActiveRecord::Base
     # end
 
   end
-
-
 end
