@@ -10,39 +10,11 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap.min
  *= require_tree .
  *= require_self
  */
 
 body {
-  /*background-color: orange;*/
-}
-
-nav li {
-  display: inline;
-  float: left;
-}
-
-header nav li {
-  display: inline;
-  /*background: black;*/
-}
-header nav a {
-  display: inline;
-  /*width: 10px;*/
-  /*background-color: #dddddd;*/
-}
-nav ul {
-  /*padding-left:10;*/
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-img {
-  max-width:50%;
-}
-
-.container {
-
+  padding-top: 70px;
 }

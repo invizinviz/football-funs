@@ -1,7 +1,6 @@
 class Tweet < ActiveRecord::Base
   belongs_to :team
 
-
   def self.publish_tweets
       team_stream = TweetStream::Client.new
       client = Faye::Client.new('http://localhost:9292/faye')

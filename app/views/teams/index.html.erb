@@ -1,15 +1,17 @@
-<h1>Footbal Fans</h1>
+
 <p>Follow your team</p>
 
-<header>
+
   <% @teams.each do |team| %>
-    <nav id="teams">
-      <ul>
+    <ul class='list-unstyled list-inline btn btn-lg btn-default'>
+      <li>
         <%= link_to team_path(team) do %> 
-        <li><%=image_tag "#{team.img}" %></li>
-      </ul>
-    </nav>
+        <%=image_tag "#{team.img}" %>
+      </li>
+    </ul>
+
+
    <% end %>
   <% end %>
-</header>
+
 
