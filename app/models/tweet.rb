@@ -1,18 +1,33 @@
 class Tweet < ActiveRecord::Base
   belongs_to :team
+  @@team_stream = TweetStream::Client.new
+
 
   def self.publish_tweets
-      team_stream = TweetStream::Client.new
       client = Faye::Client.new('http://localhost:9292/faye')
 
-      team_stream.on_reconnect do |timeout, retries|
+      @@team_stream.on_reconnect do |timeout, retries|
         puts "Hit reconnect with timeout of #{timeout} for #{retries} retries"
       end
 
-      team_stream.track("@premierleague") do |tweet|
+      # @@team_stream.track("@premierleague") do |tweet|
+      #   puts "tweet: #{tweet.text} #{client}"
+      #   client.publish("/tweets/@premierleague", tweet)
+      # end
+
+
+      twitter_handles = Team.pluck(:twitter) << "@premierleague"
+
+      @@team_stream.track("@premierleague") do |tweet|
         puts "tweet: #{tweet.text} #{client}"
-        client.publish("/tweets/apl", tweet)
+        twitter_handles.each do |handle|
+          if tweet.text.include?(handle)
+            client.publish("/tweets/#{handle}", tweet)
+            puts "published to #{handle}"
+          end
+        end
       end
+
   end
 
 # Trying to get tweet fro tweeter  and stor to DB

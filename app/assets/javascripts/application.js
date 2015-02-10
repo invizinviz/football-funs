@@ -19,11 +19,12 @@
 $(function(){
 
   // var teamCannel = $('#tweet-container').data("team");
+  var channel = $('body').data('channel');
 
   var clientSubscribe = new Faye.Client('http://localhost:9292/faye');
-  // console.log(clientSubscribe);
+  console.log(clientSubscribe);
 
-  clientSubscribe.subscribe('/tweets/apl', function(tweet){
+  clientSubscribe.subscribe('/tweets/' + channel, function(tweet){
     // console.log(tweet);
     var html = '<div class="row well"><div class="tweet"><a href="https://twitter.com/'+tweet.user.screen_name+'" target="_blank"><img src="' + tweet.user.profile_image_url + '" class="avatar pull-left"/></a><div class="names"><span class="full-name">' + tweet.user.name + ' </span><span class="username">@' +tweet.user.screen_name + '</span></div><div class="contents"><span class="text">' + tweet.text + '</span></div></div></div>';
         $('#tweet-container').prepend(html);

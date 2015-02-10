@@ -7,7 +7,7 @@
   <%= javascript_include_tag 'http://localhost:9292/faye/faye.js'%>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-channel="<%= @team.try(:twitter) || '@premierleague' %>">
   <div class="navbar navbar-default navbar-static-top navbar-fixed-top">
     <div class='container'>
           <%= link_to "Football for Fans", root_path, class: 'navbar-brand' %>
