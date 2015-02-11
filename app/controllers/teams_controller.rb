@@ -12,9 +12,7 @@ class TeamsController < ApplicationController
     # Tweet.publish_tweets(@team)
     # Tweet.team_tweets(@team)
     @tweets = team_tweets(@team)
-    if @team.name == "ARSENAL"
-      @imgs = @team.instagram_images
-    end
+    @imgs = @team.instagram_images
   end
 
 

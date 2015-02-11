@@ -2,16 +2,18 @@
   <h2><%= image_tag @team.img %> <br> <%= @team.description %> </h2>
 </div>
 
-<h3 class='lead text-left'>Official Tweets <%= @team.name %> <%= @team.twitter %></h3>
-<% @tweets.each do |tweet| %>
-  <%= image_tag tweet.user.profile_image_url %> <br>
-  <%= tweet.user.screen_name  %> <br>
-  <%= tweet.text %> <br>
-<% end %>
-
+<h3 class='lead text-right'>Official Inst <%= @team.name %> <%= link_to "Instagram", "http://instagram.com/#{@team.instagram_name}" %></h3>
 <% @imgs.each do |img| %>
   <%= image_tag img[:url] %> <br>
   likes: <%= img[:likes] %>
   comments: <%= img[:comments] %>
   <br>
 <% end %>
+
+<h3 class='lead text-left'>Official Tweets <%= @team.name %> <%= link_to "Twitter", "https://twitter.com/#{@team.twitter}" %></h3>
+<% @tweets.each do |tweet| %>
+  <%= image_tag tweet.user.profile_image_url %> <br>
+  <%= tweet.user.screen_name  %> <br>
+  <%= tweet.text %> <br>
+<% end %>
+
