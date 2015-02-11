@@ -7,10 +7,10 @@
   <%= javascript_include_tag 'http://localhost:9292/faye/faye.js'%>
   <%= csrf_meta_tags %>
 </head>
-<body data-channel="<%= @team.try(:twitter) || '@premierleague' %>">
+<body data-channel="<%= @team.try(:twitter) || 'premierleague' %>">
   <div class="navbar navbar-default navbar-static-top navbar-fixed-top">
     <div class='container'>
-      
+
           <%= link_to root_path, class: 'navbar-brand' do %>
             Football for Fans <%= image_tag ('BPL-Barclays-Premier-League-Logo.png') %>
           <% end %>
