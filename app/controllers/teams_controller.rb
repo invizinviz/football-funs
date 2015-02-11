@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.all
     # Tweet.publish_tweets
-    Tweet.team_tweets
+    # Tweet.team_tweets
   end
 
   def show
@@ -12,29 +12,13 @@ class TeamsController < ApplicationController
     # Tweet.publish_tweets(@team)
     # Tweet.team_tweets(@team)
     @tweets = team_tweets(@team)
+    if @team.name == "ARSENAL"
+      @imgs = @team.instagram_images
+    end
   end
 
 
   private 
-# ####################### DONT WORK
-#   def team_stream(team)
-#     client = Faye::Client.new('http://localhost:9292/faye')
-#     twitter_client = Twitter::Streaming::Client.new do |config|
-#       config.consumer_key        = ENV['TWITTER_API_KEY']
-#       config.consumer_secret     = ENV['TWITTER_API_SECRET']
-#       config.access_token        = ENV['ACCESS_TOKEN']
-#       config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
-#     end
-
-#     topics = ["chelsea", "arsenal"]
-#     twitter_client.filter(track: topics.join(",")) do |object|
-#       client.publish("/tweets/#{team.channel}", object)
-#       puts object.text if object.is_a?(Twitter::Tweet)
-#     end
-#   end
-# ########################################
-
-# get REST for each team
   def team_tweets(team)
     twitter_client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['FOOTBALL_CUSTOMER_TW_KEY']

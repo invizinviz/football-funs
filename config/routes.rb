@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # get 'teams/index'
-  get 'chelsea' => 'teams#chelsea'
-  get 'arsenal' => 'teams#arsenal'
+  # get 'chelsea' => 'teams#chelsea'
+  # get 'arsenal' => 'teams#arsenal'
 
   resources :teams, except: [:destroy, :edit, :update]
 

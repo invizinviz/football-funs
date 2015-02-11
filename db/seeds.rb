@@ -9,7 +9,7 @@ Team.delete_all
 
 Team.create(name: "ARSENAL", description: "ARSENAL FOOTBALL CLUB", img: "http://www.premierleague.com/content/dam/premierleague/shared-images/clubs/a/arsenal/logo.png/_jcr_content/renditions/cq5dam.thumbnail.140.100.png", tweetstream_id: 34613288, channel: "arsenal", twitter: "arsenal") 
 
-Team.create(name: "ASTON VILLA", description: "ASTON VILLA FOOTBALL CLUB", img: "http://www.premierleague.com/content/dam/premierleague/shared-images/clubs/a/aston-villa/logo.png/_jcr_content/renditions/cq5dam.thumbnail.140.100.png", tweetstream_id: 27489253, channel: "aston", twitter: "AVFCOfficial")
+Team.create(name: "ASTON VILLA", description: "ASTON VILLA FOOTBALL CLUB", img: "http://www.premierleague.com/content/dam/premierleague/shared-images/clubs/a/aston-villa/logo.png/_jcr_content/renditions/cq5dam.thumbnail.140.100.png", tweetstream_id: 27489253, channel: "aston", twitter: "AVFCOfficial", instagram_id: 1392032629)
 
 Team.create(name: "BURNLEY", description: "BURNLEY FOOTBALL CLUB", img: "http://www.premierleague.com/content/dam/premierleague/shared-images/clubs/b/burnley/logo.png/_jcr_content/renditions/cq5dam.thumbnail.140.100.png", tweetstream_id: 441309926, channel: "burnley", twitter: "BurnleyOfficial")
 

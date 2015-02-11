@@ -2,12 +2,16 @@
   <h2><%= image_tag @team.img %> <br> <%= @team.description %> </h2>
 </div>
 
-<!-- <h3>Streem tweets</h3> -->
-<!-- <div class='container' id='tweet-container' data-team="<%#= @team.channel %>"></div> -->
-
 <h3 class='lead text-left'>Official Tweets <%= @team.name %> <%= @team.twitter %></h3>
 <% @tweets.each do |tweet| %>
   <%= image_tag tweet.user.profile_image_url %> <br>
   <%= tweet.user.screen_name  %> <br>
   <%= tweet.text %> <br>
+<% end %>
+
+<% @imgs.each do |img| %>
+  <%= image_tag img[:url] %> <br>
+  likes: <%= img[:likes] %>
+  comments: <%= img[:comments] %>
+  <br>
 <% end %>

@@ -10,12 +10,6 @@ class Tweet < ActiveRecord::Base
         puts "Hit reconnect with timeout of #{timeout} for #{retries} retries"
       end
 
-      # @@team_stream.track("@premierleague") do |tweet|
-      #   puts "tweet: #{tweet.text} #{client}"
-      #   client.publish("/tweets/@premierleague", tweet)
-      # end
-
-
       twitter_handles = Team.pluck(:twitter) << "@premierleague"
 
       @@team_stream.track(twitter_handles) do |tweet|
@@ -30,7 +24,6 @@ class Tweet < ActiveRecord::Base
 
   end
 
-# Trying to get tweet fro tweeter  and stor to DB
   def self.team_tweets
     # client = Faye::Client.new('http://localhost:9292/faye')
 
@@ -43,12 +36,9 @@ class Tweet < ActiveRecord::Base
 
 
     topics = ["premierleague", "arsenal", "chelsea"]
-    # stored_tweets = []
-    # tweets_stored = 0
     puts "in team tweets"
 
     twitter_handles = Team.pluck(:twitter) << "premierleague"
-    # puts "#{@@twitter_client}"
     Thread.new do 
       @@twitter_client.filter(track: topics.join(",")) do |tweet|
         puts "tweet: #{tweet.text}"
@@ -60,24 +50,5 @@ class Tweet < ActiveRecord::Base
         end
       end
     end
-
-
-    # Thread.new do 
-    #   puts "Thread started for #{team.name}"
-    #   #puts "Threads: #{Thread.list }"
-    #   twitter_client.filter(track: topics.join(",")) do |tweet|
-    #     stored_tweets << { username: tweet.attrs[:user][:screenname], tweet_text: tweet.text }
-    #     tweets_stored += 1
-    #     puts "#{tweets_stored} gathered"
-    #     client.publish("/tweets/#{team.channel}", tweet)
-    #     if tweets_stored >= 10
-    #       puts "Thread for #{team.name} stopped."
-    #       Thread.stop 
-    #     end
-    #     # puts object.text if object.is_a?(Twitter::Tweet)
-    #   end
-    # end
-
-
   end
 end

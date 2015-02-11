@@ -7,7 +7,8 @@ gem 'thin'
 gem 'tweetstream'
 gem 'twitter'
 gem 'yajl-ruby', require: 'yajl'
-
+gem 'instagram'
+gem 'httparty'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
