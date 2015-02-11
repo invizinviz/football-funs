@@ -10,26 +10,26 @@
 <body data-channel="<%= @team.try(:twitter) || '@premierleague' %>">
   <div class="navbar navbar-default navbar-static-top navbar-fixed-top">
     <div class='container'>
-          <%= link_to "Football for Fans", root_path, class: 'navbar-brand' %>
+      
+          <%= link_to root_path, class: 'navbar-brand' do %>
+            Football for Fans <%= image_tag ('BPL-Barclays-Premier-League-Logo.png') %>
+          <% end %>
          
           <ul class='nav navbar-nav navbar-right'>
             <li><a href="#">About</a></li>
             <li><a href="#">Scheme</a></li>
           </ul>
-          <!-- <h1>Football for Fans</h1> -->
         </div>
       </div>
     </div>
   </div>
     <div class='row'>
       <div class='col-sm-3 hidden-xs'>
-        <h3> Twitter </h3>
         <div class='' id='tweet-container'></div>
       </div>
       <div class='col-sm-6 col-xs-12'>
         <%= yield %>
       </div>
-      <!-- <h3>Streem tweets</h3> -->
       <div class='col-sm-3 hidden-xs'>
         <h3>Instagram</h3>
       </div>

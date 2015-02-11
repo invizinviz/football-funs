@@ -19,11 +19,11 @@ class Tweet < ActiveRecord::Base
       twitter_handles = Team.pluck(:twitter) << "@premierleague"
 
       @@team_stream.track(twitter_handles) do |tweet|
-        puts "tweet: #{tweet.text} #{client}"
+        puts "tweet: #{tweet.text}"
         twitter_handles.each do |handle|
           if tweet.text.include?(handle)
             client.publish("/tweets/#{handle}", tweet)
-            puts "published to #{handle}"
+            # puts "published to #{handle}"
           end
         end
       end

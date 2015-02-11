@@ -1,3 +1,4 @@
+
 TweetStream.configure do |config|
   config.consumer_key  = ENV['FOOTBALL_CUSTOMER_TW_KEY']
   config.consumer_secret = ENV['FOOTBALL_CUSTOMER_TW_SECRET_KEY']

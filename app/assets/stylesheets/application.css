@@ -18,3 +18,15 @@
 body {
   padding-top: 70px;
 }
+
+.container img {
+  max-width:100px;
+  margin-top: -35px;
+  margin-left: -75px;
+  /*background-image: url("football_header.jpg");*/
+  /*height: 50px;*/
+}
+
+.btn-default {
+  border: 0;
+}
