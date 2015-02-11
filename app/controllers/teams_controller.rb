@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.all
     # Tweet.publish_tweets
-    # Tweet.team_tweets
+    Tweet.team_tweets
   end
 
   def show

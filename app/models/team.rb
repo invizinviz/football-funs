@@ -6,23 +6,14 @@ class Team < ActiveRecord::Base
     arr_imgs = []
     img = {}
     if !data["data"].empty?
-    for i in 0..9
-      arr_imgs << img = {
-        url: data["data"][i]["images"]["standard_resolution"]["url"],
-        comments: data["data"][i]["comments"]["count"],
-        likes:  data["data"][i]["likes"]["count"]
-      }
+      for i in 0..9
+        arr_imgs << img = {
+          url: data["data"][i]["images"]["standard_resolution"]["url"],
+          comments: data["data"][i]["comments"]["count"],
+          likes:  data["data"][i]["likes"]["count"]
+        }
+      end
     end
-      # img['url'] = data["data"][i]["images"]["standard_resolution"]["url"]
-      # img['comments'] = data["data"][i]["comments"]["count"] 
-      # img['likes'] =  data["data"][i]["likes"]["count"]
-      # arr_imgs.push(img)
-      # puts "images: #{img}" 
-    end
-    # raise
-    puts "array#{arr_imgs}"  
-
     arr_imgs
   end
-
 end
