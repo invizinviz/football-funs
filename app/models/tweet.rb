@@ -3,26 +3,26 @@ class Tweet < ActiveRecord::Base
   @@team_stream = TweetStream::Client.new
   @@faye_client = Faye::Client.new('http://localhost:9292/faye')
 
-  def self.publish_tweets
+  # def self.publish_tweets
       
 
-      @@team_stream.on_reconnect do |timeout, retries|
-        puts "Hit reconnect with timeout of #{timeout} for #{retries} retries"
-      end
+  #     @@team_stream.on_reconnect do |timeout, retries|
+  #       puts "Hit reconnect with timeout of #{timeout} for #{retries} retries"
+  #     end
 
-      twitter_handles = Team.pluck(:twitter) << "@premierleague"
+  #     twitter_handles = Team.pluck(:twitter) << "@premierleague"
 
-      @@team_stream.track(twitter_handles) do |tweet|
-        puts "tweet: #{tweet.text}"
-        twitter_handles.each do |handle|
-          if tweet.text.include?(handle)
-            @@faye_client.publish("/tweets/#{handle}", tweet)
-            puts "published to #{handle}"
-          end
-        end
-      end
+  #     @@team_stream.track(twitter_handles) do |tweet|
+  #       puts "tweet: #{tweet.text}"
+  #       twitter_handles.each do |handle|
+  #         if tweet.text.include?(handle)
+  #           @@faye_client.publish("/tweets/#{handle}", tweet)
+  #           puts "published to #{handle}"
+  #         end
+  #       end
+  #     end
 
-  end
+  # end
 
   def self.team_tweets
     # client = Faye::Client.new('http://localhost:9292/faye')
@@ -40,7 +40,7 @@ class Tweet < ActiveRecord::Base
 
     twitter_handles = Team.pluck(:twitter) << "premierleague"
     Thread.new do 
-      @@twitter_client.filter(track: twitter_handles.join(",")) do |tweet|
+      @@twitter_client.filter(track: twitter_handles.join(","), language: "en") do |tweet|
         puts "tweet: #{tweet.text}"
         twitter_handles.each do |handle|
           if tweet.text.include?(handle)
