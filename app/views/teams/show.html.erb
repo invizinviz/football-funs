@@ -3,21 +3,24 @@
 </div>
 
 <div class="col-sm-4 col-offset-1 ">
-<h3 class='lead text-left'>Official  <%= link_to "Instagram", "http://instagram.com/#{@team.instagram_name}" %> <%= @team.name %></h3>
-<% @imgs.each do |img| %>
-  <%= image_tag img[:url], class: "img img-responsive img-rounded" %> 
+  <h3 class='lead text-left'>Official  <%= link_to "Instagram", "http://instagram.com/#{@team.instagram_name}" %> <%= @team.name %></h3>
+  <% @imgs.each do |img| %>
+  <div class="img img-thumbnail text-muted">
+  <%= image_tag img[:url], class: "img img-responsive " %> 
   likes: <%= img[:likes] %>
   comments: <%= img[:comments] %>
+  </div>
   <br>
   <br>
-<% end %>
+  <% end %>
 </div>
 
 <div class="col-sm-6">
-<h3 class='lead text-right'>Official <%= link_to "Twitter", "https://twitter.com/#{@team.twitter}" %> <%= @team.name %> </h3>
-<% @tweets.each do |tweet| %>
-  <%= image_tag tweet.user.profile_image_url %> <br>
-  <%= tweet.user.screen_name  %> <br>
-  <%= tweet.text %> <br>
-<% end %>
+  <h3 class='lead text-right'>Official <%= link_to "Twitter", "https://twitter.com/#{@team.twitter}" %> <%= @team.name %> </h3>
+  <% @tweets.each do |tweet| %>
+  <%= image_tag tweet.user.profile_image_url, class: "img twitter-img" %> 
+  <%= link_to "#{tweet.user.screen_name}", "https://twitter.com/#{tweet.user.screen_name}", text: "@#{tweet.user.screen_name}" %> <br>
+  <%= tweet.text %> <br> <br>
+  <% end %>
+
 </div>
