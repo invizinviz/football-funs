@@ -35,12 +35,12 @@ class Tweet < ActiveRecord::Base
     # end
 
 
-    topics = ["premierleague", "arsenal", "chelsea"]
-    puts "in team tweets"
+    # topics = ["premierleague", "arsenal", "chelsea"]
+    # puts "in team tweets"
 
     twitter_handles = Team.pluck(:twitter) << "premierleague"
     Thread.new do 
-      @@twitter_client.filter(track: topics.join(",")) do |tweet|
+      @@twitter_client.filter(track: twitter_handles.join(",")) do |tweet|
         puts "tweet: #{tweet.text}"
         twitter_handles.each do |handle|
           if tweet.text.include?(handle)
