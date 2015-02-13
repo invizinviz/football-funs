@@ -6,9 +6,9 @@
   <h3 class='lead text-left'>Official  <%= link_to "Instagram", "http://instagram.com/#{@team.instagram_name}" %> <%= @team.name %></h3>
   <% @imgs.each do |img| %>
   <div class="img img-thumbnail text-muted">
-  <%= image_tag img[:url], class: "img img-responsive " %> 
-  likes: <%= img[:likes] %>
-  comments: <%= img[:comments] %>
+    <%= image_tag img[:url], class: "img img-responsive " %> 
+    likes: <%= img[:likes] %>
+    comments: <%= img[:comments] %>
   </div>
   <br>
   <br>
