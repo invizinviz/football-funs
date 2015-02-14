@@ -1,3 +1,25 @@
 // Place all the styles related to the Teams controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  // background: lightgrey;
+}
+
+#stream {
+  background: white;
+  padding: 0px 0 0;
+}
+#show-teams {
+  // padding: 15px;
+  margin: 13px;
+  border: none;
+}
+
+#instagram {
+  display: none;
+}
+
+#twitter {
+  display: block;
+}

@@ -1,4 +1,4 @@
-$(function(){
+// $(function(){
 
 
   // $('.chelsea').on('click', function(d,s,id){
@@ -35,4 +35,4 @@ $(function(){
   //     // });
   //   }}(document,"script","twitter-wjs")
   // );
-});
+// });

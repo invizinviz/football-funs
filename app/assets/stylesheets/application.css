@@ -15,21 +15,18 @@
  *= require_self
  */
 
-body {
-  padding-top: 70px;
-}
-
 .container img {
   max-width:100px;
   margin-top: -35px;
   margin-left: -75px;
-  /*background-image: url("football_header.jpg");*/
-  /*height: 50px;*/
 }
 
-.btn-default {
-  border: 0;
+.navbar-brand {
+  line-height: 50px;
+  padding: 0;
 }
-.twitter-img {
-  width: 20px;
+
+.navbar-brand img {
+  display: inline-block;
+  max-height: 40px;
 }

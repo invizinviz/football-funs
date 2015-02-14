@@ -1,8 +1,49 @@
-<div class="text-center">
-  <h2><%= image_tag @team.img %> <br> <%= @team.description %> </h2>
+<div class="col-sm-12">
+  <div class="jumbotron">
+    <div class="text-center">
+      <h2><%= image_tag @team.img %> <br> <%= @team.description %> </h2>
+      <h3 class='lead'>Official  <%= link_to "Instagram", "http://instagram.com/#{@team.instagram_name}" %> <%= @team.name %></h3>
+      <h3 class='lead'>Official <%= link_to "Twitter", "https://twitter.com/#{@team.twitter}" %> <%= @team.name %> </h3>
+      <div class="btn-group" role="group">
+        <button id="toggle-twitter" type="button" class="btn btn-default"><i class="fa fa-twitter"></i> Live Twitter <span>0</span></button>
+        <button id="toggle-official-twitter" type="button" class="btn btn-default"><i class="fa fa-twitter"></i> Official Twitter <span>0</span></button>
+        <button id="toggle-instagram" type="button" class="btn btn-default"><i class="fa fa-instagram"></i> Instagram <span>0</span></button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="col-sm-4 col-offset-1 ">
+<div id="instagram" class="col-sm-12">
+  <% @imgs.each do |img| %>
+  <div class="thumbnail">
+    <%= image_tag img[:url], class: "img img-responsive " %>
+    <div class="caption">
+      <p>likes: <%= img[:likes] %></p>
+      <p>comments: <%= img[:comments] %></p>
+    </div>
+  </div>
+  <% end %>
+</div>
+<div id="twitter" class="col-sm-12">
+  <ul class="media-list">
+    <% @tweets.each do |tweet| %>
+    <li class="media">
+      <div class="media-left">
+        <a href="#">
+          <%= image_tag tweet.user.profile_image_url, class: "media-object" %>
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%= link_to "#{tweet.user.screen_name}", "https://twitter.com/#{tweet.user.screen_name}" %></h4>
+        <%= tweet.text %>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+
+<!-- <div class="col-sm-4 col-offset-1 ">
   <h3 class='lead text-left'>Official  <%= link_to "Instagram", "http://instagram.com/#{@team.instagram_name}" %> <%= @team.name %></h3>
   <% @imgs.each do |img| %>
   <div class="img img-thumbnail text-muted">
@@ -22,5 +63,5 @@
   <%= link_to "#{tweet.user.screen_name}", "https://twitter.com/#{tweet.user.screen_name}", text: "@#{tweet.user.screen_name}" %> <br>
   <%= tweet.text %> <br> <br>
   <% end %>
-
 </div>
+ -->
