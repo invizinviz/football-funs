@@ -28,7 +28,6 @@ class TeamsController < ApplicationController
   def team_official_timeline_tweets(team)
     tweets = []
     set_twitter_client.user_timeline(team.tweetstream_id).each { |tweet| tweets << tweet  }
-    # raise
   end
 
   def team_tweets_for_stream(team)

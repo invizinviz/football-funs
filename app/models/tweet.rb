@@ -1,17 +1,16 @@
 class Tweet < ActiveRecord::Base
   belongs_to :team
-  # @@team_stream = TweetStream::Client.new
+  @@faye_client = Faye::Client.new('http://localhost:9292/faye')
   @@twitter_client = Twitter::Streaming::Client.new do |config|
     config.consumer_key        = ENV['FOOTBALL_CUSTOMER_TW_KEY']
     config.consumer_secret     = ENV['FOOTBALL_CUSTOMER_TW_SECRET_KEY']
     config.access_token        = ENV['FOOTBALL_ACCESS_TOKEN']
     config.access_token_secret = ENV['FOOBALL_ACCESS_TOKEN_SECRET']
   end
-  
-  @@faye_client = Faye::Client.new('http://localhost:9292/faye')
 
   def self.team_tweets
     twitter_handles = Team.pluck(:twitter) << "premierleague"
+    
     Thread.new do 
       @@twitter_client.filter(track: twitter_handles.join(","), language: "en") do |tweet|
         puts "tweet: #{tweet.text}"
@@ -24,4 +23,5 @@ class Tweet < ActiveRecord::Base
       end
     end
   end
+
 end

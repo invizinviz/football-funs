@@ -2,22 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  // background: lightgrey;
-}
-
 #stream {
-  background: lightgrey;
+  // background: lightgrey;
   padding: 0px 0 0;
 }
 #show-teams {
   padding: 15px;
   margin: 10px;
-  // border: none;
   width: 300px;
   margin-left: 70px;
-  // text-align: center;
-  // margin: 0 auto;
+}
+
+#show-teams a:link {
+    text-decoration: none;
+}
+
+#show-teams a:visited {
+    text-decoration: none;
+}
+
+#show-teams a:hover {
+    text-decoration: none;
+}
+
+#show-teams a:active {
+    text-decoration: none;
 }
 
 .jumbotron {

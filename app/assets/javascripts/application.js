@@ -39,10 +39,10 @@ $(function(){
     // $('#twitter .media-list').prepend(html);
     var $twittercounter = $('#toggle-twitter span');
     $twittercounter.text(Number($twittercounter.text())+1);
-    $('#toggle-twitter').addClass("btn btn-success");
+    // $('#toggle-twitter').addClass("btn btn-success");
   });
 
-  $('#toggle-instagram, #toggle-twitter').on('click', function(){
+  $('#toggle-instagram, #toggle-official-twitter').on('click', function(){
     $('#instagram').slideToggle("slow");
     $('#twitter').slideToggle("slow");
   });
