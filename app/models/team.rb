@@ -5,7 +5,7 @@ class Team < ActiveRecord::Base
     data = HTTParty.get("https://api.instagram.com/v1/users/#{self.instagram_id}/media/recent/?access_token=#{ENV['INST_ACCESS_TOKEN']}&count=10")
     arr_imgs = []
     img = {}
-    if !data["data"].empty?
+    if data["data"].count > 10
       for i in 0..9
         arr_imgs << img = {
           url: data["data"][i]["images"]["standard_resolution"]["url"],

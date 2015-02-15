@@ -1,5 +1,8 @@
 <div class="col-sm-12">
   <div class="jumbotron">
+    <style media="screen">
+      .jumbotron { background-image: url(<%= @banner %>); }
+    </style>
     <div class="text-center">
       <h2><%= image_tag @team.img %> <br> <%= @team.description %> </h2>
       <h3 class='lead'>Official  <%= link_to "Instagram", "http://instagram.com/#{@team.instagram_name}" %> <%= @team.name %></h3>
@@ -36,7 +39,7 @@
       <div class="media-body">
         <h4 class="media-heading"><%= link_to "#{tweet.user.screen_name}", "https://twitter.com/#{tweet.user.screen_name}" %></h4>
         <%= tweet.text %> <br>
-        <% if !tweet.media.empty? %>
+        <% if !tweet.try(:media).empty? %>
           <%= image_tag tweet.media[0].media_url %>
         <% end %>
       </div>
