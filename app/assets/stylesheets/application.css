@@ -29,4 +29,12 @@
 .navbar-brand img {
   display: inline-block;
   max-height: 40px;
+  margin-left: 100px;
 }
+
+/*body {
+  background-image: url('football_header.jpg');
+
+}
+
+*/

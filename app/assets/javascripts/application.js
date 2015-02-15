@@ -23,6 +23,7 @@ $(function(){
   console.log(clientSubscribe);
 
   clientSubscribe.subscribe('/tweets/' + channel, function(tweet){
+    // textUrl = findLink(tweet.text);
     var html = '<li class="media"><div class="media-left"><a href="https://twitter.com/'+tweet.user.screen_name+'" target="_blank"><img src="' + tweet.user.profile_image_url + '" class="media-object"/></a></div><div class="media-body"><h4 class="media-heading"><a href="https://twitter.com/'+tweet.user.screen_name+'" target="_blank">'+tweet.user.name+'</a></h4>' + tweet.text + '</div></li>';
     $('#tweet-container').prepend(html);
     // $('#twitter .media-list').prepend(html);
@@ -34,6 +35,14 @@ $(function(){
   $('#toggle-instagram, #toggle-twitter').on('click', function(){
     $('#instagram').slideToggle("slow");
     $('#twitter').slideToggle("slow");
-  })
+  });
 
 });
+
+var findLinks = function(text) {
+  var regexUrl = "(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?";
+
+  return text.replace(regexUrl, function(url) {
+      return '<a href="' + url + '">' + url + '</a>';
+  });
+};

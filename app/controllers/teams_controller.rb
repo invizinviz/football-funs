@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
     # Tweet.publish_tweets(@team)
     # Tweet.team_tweets(@team)
     @tweets = team_tweets(@team)
+    # raise
     @imgs = @team.instagram_images
   end
 
@@ -27,6 +28,7 @@ class TeamsController < ApplicationController
     tweets = []
     twitter_client.user_timeline(team.tweetstream_id).each do |tweet|
       tweets << tweet
+      # raise
     end
     tweets
   end

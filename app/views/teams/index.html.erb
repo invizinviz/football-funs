@@ -1,12 +1,16 @@
 
   <% @teams.each do |team| %>
-    <ul class='col-sm-2 list-unstyled list-inline btn btn-lg btn-default' id="show-teams">
+    <ul class='col-sm-4 list-unstyled list-inline btn btn-lg btn-default' id="show-teams">
       <li>
         <%= link_to team_path(team) do %> 
-        <%=image_tag "#{team.img}" %>
-      </li>
-    </ul>
+        <%=image_tag "#{team.img}" %> <br>
+        <%= team.name %> <br>
+
    <% end %>
+      followers: 
+     </li>
+   </ul>  
+
   <% end %>
 
 

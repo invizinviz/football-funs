@@ -7,13 +7,18 @@ body {
 }
 
 #stream {
-  background: white;
+  background: lightgrey;
   padding: 0px 0 0;
 }
 #show-teams {
-  // padding: 15px;
-  margin: 13px;
-  border: none;
+  padding: 15px;
+  margin: 10px;
+  // border: none;
+  width: 300px;
+  margin-left: 70px;
+  // text-align: center;
+  // margin: 0 auto;
+
 }
 
 #instagram {
