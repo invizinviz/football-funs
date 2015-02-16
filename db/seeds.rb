@@ -24,7 +24,7 @@ Team.create(name: "MANCHESTER UNITED", description: "MANCHESTER UNITED FOOTBALL 
 
 Team.create(name: "NEWCASTLE UTD", description: "NEWCASTLE UNITED FOOTBALL CLUB", img: "http://www.premierleague.com/content/dam/premierleague/shared-images/clubs/n/newcastle/logo.png/_jcr_content/renditions/cq5dam.thumbnail.140.100.png", tweetstream_id: 35758259, channel: "newcastle", twitter: "NUFC", instagram_id: 739174963, instagram_name: "newcastleunited_official")
 
-Team.create(name: "QUEENS PARK RANGERS", description: "QUEENS PARK RANGERS FOOTBALL CLUB", img: "http://www.premierleague.com/content/dam/premierleague/shared-images/clubs/q/qpr/logo.png/_jcr_content/renditions/cq5dam.thumbnail.140.100.png", tweetstream_id: 71210107, channel: "qpr", twitter: "QPRFC", instagram_id: 191027287, instagram_name: "officialQPR")
+Team.create(name: "QPR", description: "QUEENS PARK RANGERS FOOTBALL CLUB", img: "http://www.premierleague.com/content/dam/premierleague/shared-images/clubs/q/qpr/logo.png/_jcr_content/renditions/cq5dam.thumbnail.140.100.png", tweetstream_id: 71210107, channel: "qpr", twitter: "QPRFC", instagram_id: 191027287, instagram_name: "officialQPR")
 
 Team.create(name: "SOUTHAMPTON", description: "SOUTHAMPTON FOOTBALL CLUB", img: "http://www.premierleague.com/content/dam/premierleague/shared-images/clubs/s/southampton/logo.png/_jcr_content/renditions/cq5dam.thumbnail.140.100.png", tweetstream_id: 46143892, channel: "southampton", twitter: "SouthamptonFC", instagram_id: 215342362, instagram_name: "southamptonfc")
 

@@ -50,3 +50,21 @@
   max-height: 1000px;
   overflow: scroll;
 }
+.tweet-timeline-img {
+  border-radius: 4px;
+  float: left;
+  height: 24px;
+  margin: 0 6px 0 0;
+  width: 24px;
+}
+
+.tweet-fullname {
+  font-size: 14px;
+  font-weight: bold;
+  color: #292f33;
+}
+
+.tweet-screenname {
+  color: #8899a6;
+  font-size: 13px;
+}
