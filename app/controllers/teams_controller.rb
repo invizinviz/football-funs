@@ -4,6 +4,7 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.all
     Tweet.team_tweets
+    @standings = standings
   end
 
   def show
@@ -37,6 +38,11 @@ class TeamsController < ApplicationController
 
   def team_banner(team)
     set_twitter_client.profile_banner(team.tweetstream_id).attrs[:sizes][:web][:url]
+  end
+
+  def standings
+    teams_standings = HTTParty.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_API']}&comp_id=1204")
+
   end
 
 end
