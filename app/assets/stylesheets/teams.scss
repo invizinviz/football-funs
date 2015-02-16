@@ -86,6 +86,7 @@
   width: 350px;
   height: 350px;
   padding: 20px;
+  position: center;
   // padding-left: 100px;
   margin-left: auto;
   margin-right: auto;
@@ -93,4 +94,11 @@
 
 #likes-comments {
   text-align: center;
+  display: none;
+}
+
+#instagram-timeline-size:hover{
+  #likes-comments {
+    display: block;
+  }  
 }
