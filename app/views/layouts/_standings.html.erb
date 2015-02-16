@@ -17,9 +17,8 @@
         </tr>
       </thead>
       <tbody>
-
+      <% if !@standings['teams'].nil? %>
         <% @standings["teams"].each do |i| %>
-
         <tr class="standing-table__row">
           <td class="standing-table__cell"><%= i["stand_position"] %></td>
           <td class="standing-table__cell standing-table__cell--name" >
@@ -33,10 +32,10 @@
           <td class="standing-table__cell"><%= i["stand_overall_ga"] %></td>
           <td class="standing-table__cell"><%= i["stand_gd"] %></td>
           <td class="standing-table__cell"><%= i["stand_points"] %></td>
+        </tr>
+        <% end %>
+      <% end %>
+      </tbody>
 
-          <% end %>
-          
-        </tbody>
-        
-      </table>
-    </div>
+    </table>
+  </div>

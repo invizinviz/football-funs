@@ -4,10 +4,4 @@ $(function(){
     $('#twitter').slideToggle("slow");
   });
 
-  // $('#instagram-timeline-size').hover(function(){
-  //   $("#likes-comments").css("display", "block");
-  // }, function(){
-  //   $("#likes-comments").css("display", "none");
-  // });
-  
 });

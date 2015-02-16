@@ -5,11 +5,10 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.all
     Tweet.team_tweets
-    # @standings = standings
+
   end
 
   def show
-    # @standings = standings
     @team = Team.find params[:id]
     @tweets = team_official_timeline_tweets(@team)
     @tweets_mentions = team_tweets_for_stream(@team)
