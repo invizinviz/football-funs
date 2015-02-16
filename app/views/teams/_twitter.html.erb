@@ -13,8 +13,6 @@
         <% if !tweet.try(:media).empty? %>
           <%= image_tag tweet.media[0].media_url %>
         <% end %>
-                <!-- <h1>AUTO LINK</h1> -->
-        <%#= Twitter::Autolink.auto_link("link @#{@team.twitter}, please #{@team.channel}") %>
       </div>
     </li>
     <% end %>

@@ -9,23 +9,24 @@
 }
 
 tr {
-display: table-row;
-vertical-align: inherit;
-border-color: inherit;
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
 }
 
 table {
-display: table;
-border-collapse: separate;
-border-spacing: 2px;
-border-color: gray;
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
 }
+
 .standing-table__table {
-width: 100%;
-border-collapse: separate;
-border-spacing: 0;
-position: relative;
-overflow: hidden;
-background: none;
-font-size: 1em;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  position: relative;
+  overflow: hidden;
+  background: none;
+  font-size: 1em;
 }

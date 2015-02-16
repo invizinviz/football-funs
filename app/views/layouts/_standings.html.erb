@@ -1,8 +1,8 @@
 <div class="standing-table">
   <table class="standing-table__table">
     <caption class="standing-table_caption">
-        Barclays Premier League 2014/15  </caption>
-    <thead>
+      Barclays Premier League 2014/15  </caption>
+      <thead>
         <tr class="standing-table__row">
           <th class="standing-table__cell standing-table__header-cell" title="Position" data-label="pos" data-index="0">#</th>
           <th class="standing-table__cell standing-table__header-cell standing-table__cell--name" title="Team" data-index="1">Team</th>
@@ -16,17 +16,14 @@
           <th class="standing-table__cell standing-table__header-cell" data-label="pts" data-sort-value="use-attribute" data-index="9">Pts</th>
         </tr>
       </thead>
-    <tbody>
+      <tbody>
 
-      <% @standings["teams"].each do |i| %>
+        <% @standings["teams"].each do |i| %>
 
-          <tr class="standing-table__row">
+        <tr class="standing-table__row">
           <td class="standing-table__cell"><%= i["stand_position"] %></td>
           <td class="standing-table__cell standing-table__cell--name" >
             <%= link_to "#{i["stand_team_name"] }", "/teams/#{Team.get_link_for_team(i["stand_team_name"])}" %>
-
-                    <!-- <a href="/teams/"<%= %> class="standing-table__cell"><%= i["stand_team_name"] %></a> -->
-            
           </td>
           <td class="standing-table__cell"><%= i["stand_overall_gp"] %></td>
           <td class="standing-table__cell"><%= i["stand_overall_w"] %></td>
@@ -37,9 +34,9 @@
           <td class="standing-table__cell"><%= i["stand_gd"] %></td>
           <td class="standing-table__cell"><%= i["stand_points"] %></td>
 
-      <% end %>
- 
-      </tbody>
-    
-  </table>
-</div>
+          <% end %>
+          
+        </tbody>
+        
+      </table>
+    </div>
