@@ -1,12 +1,15 @@
 <div id="instagram" class="col-sm-12">
   <% if @team.name != "EVERTON" %>
     <% @imgs.each do |img| %>
-    <div class="thumbnail">
+    <div class="thumbnail col-sm-6" id="instagram-timeline-size">
       <%= image_tag img[:url], class: "img img-responsive " %>
       <div class="caption">
-        <p>likes: <%= img[:likes] %></p>
-        <p>comments: <%= img[:comments] %></p>
+        <div id="likes-comments"> 
+          <%= image_tag "likes.png",  size: "16x16" %> <%= number_to_human(img[:likes]) %>
+          <%= image_tag "comment.png", size: "20x20"   %> <%= number_to_human(img[:comments]) %>
+        </div>
       </div>
+      <br>
     </div>
     <% end %>
   <% end %>

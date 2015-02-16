@@ -1,27 +1,29 @@
 <div id="twitter" class="col-sm-12">
   <ul class="media-list">
-    
+
     <% @tweets.each do |tweet| %>
-    <div class="">
-    <li class="media">
-      <div class="media-left">
+    <div >
+      <li class="media">
+        <div class="media-left">
           <%= image_tag tweet.user.profile_image_url, class: "media-object tweet-timeline-img" %>
-      </div>
-      <div class="media-body">
-        <div class="media-heading"><%= link_to "#{tweet.user.screen_name}", "https://twitter.com/#{tweet.user.screen_name}", class: "tweet-fullname" %>
-          <i class="tweet-screenname">
-          <%= "@#{tweet.user.screen_name}" %>
-          </i>
         </div>
-        <p class="team-timeline-tweets"> <%= tweet.text %></p>
-        <% if !tweet.try(:media).empty? %>
-          <%= image_tag tweet.media[0].media_url %>
-        <% end %>
-      </div>
-    </li>
+        <div class="media-body">
+          <div class="media-heading"><%= link_to "#{tweet.user.screen_name}", "https://twitter.com/#{tweet.user.screen_name}", class: "tweet-fullname" %>
+            <i class="tweet-screenname">
+              <%= "@#{tweet.user.screen_name}" %>
+            </i>
+          </div>
+          <p class="team-timeline-tweets"> <%= tweet.text %></p>
+          <% if !tweet.try(:media).empty? %>
+            <div id="tweets-timeline-size">
+              <%= image_tag tweet.media[0].media_url %>
+            </div>
+          <% end %>
+        </div>
+      </li>
     </div>
     <br>
     <% end %>
-  
+
   </ul>
 </div>

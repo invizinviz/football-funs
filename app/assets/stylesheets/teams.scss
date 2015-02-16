@@ -40,6 +40,11 @@
 
 #instagram {
   display: none;
+
+  // top: 50%;
+
+  // width: 70%;
+  // background-color: #b0e0e6;
 }
 
 #twitter {
@@ -67,4 +72,25 @@
 .tweet-screenname {
   color: #8899a6;
   font-size: 13px;
+}
+.thumbnail {
+  border: none;
+}
+
+#tweets-timeline-size {
+  width: 640px;
+  height: 361px;
+}
+
+#instagram-timeline-size {
+  width: 350px;
+  height: 350px;
+  padding: 20px;
+  // padding-left: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#likes-comments {
+  text-align: center;
 }
