@@ -5,6 +5,8 @@ gem 'thin'
 gem 'twitter'
 gem 'httparty'
 
+#gem 'twitter-text'
+
 # gem "private_pub"
 # gem 'redis'
 # gem 'tweetstream'

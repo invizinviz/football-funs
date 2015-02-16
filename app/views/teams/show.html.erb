@@ -38,10 +38,12 @@
       </div>
       <div class="media-body">
         <h4 class="media-heading"><%= link_to "#{tweet.user.screen_name}", "https://twitter.com/#{tweet.user.screen_name}" %></h4>
-        <%= tweet.text %> <br>
+        <p class="team-timeline-tweets"> <%= tweet.text %></p>
         <% if !tweet.try(:media).empty? %>
           <%= image_tag tweet.media[0].media_url %>
         <% end %>
+                <!-- <h1>AUTO LINK</h1> -->
+        <%#= Twitter::Autolink.auto_link("link @#{@team.twitter}, please #{@team.channel}") %>
       </div>
     </li>
     <% end %>
