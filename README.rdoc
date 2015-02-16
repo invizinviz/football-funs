@@ -1,7 +1,6 @@
 == README
 Sport for Social Fans
-will help fans keep track of the social activity of their team in social networks (Facebook, Twitter, Instagram)
+helps fans keep track of the social activity of their team in social networks (Twitter, Instagram)
 
 rackup faye.ru -s thin -E production
-rake tweets:store_tweets
 rails s
