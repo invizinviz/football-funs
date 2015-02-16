@@ -45,3 +45,8 @@
 #twitter {
   display: block;
 }
+
+#tweet-container {
+  max-height: 1000px;
+  overflow: scroll;
+}

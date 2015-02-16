@@ -50,5 +50,11 @@ $(function(){
 
   $(".team-timeline-tweets").twitter_autolink();
 
+  // $('#tweet-container').onePageNav({
+  //          currentClass: 'active',
+  //          changeHash: true,
+  //          scrollSpeed: 1200
+  //          });
+
 });
 
