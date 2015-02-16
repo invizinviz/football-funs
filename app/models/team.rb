@@ -16,4 +16,10 @@ class Team < ActiveRecord::Base
     end
     arr_imgs
   end
+
+  def self.get_link_for_team(team_name)
+    Team.all.map do |i|
+      return i.id if i.name.downcase == team_name.downcase
+    end
+  end
 end

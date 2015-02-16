@@ -1,15 +1,15 @@
 class TeamsController < ApplicationController
   # before_action :set_twitter_client, only: [:team_official_timeline_tweets, :team_tweets_for_stream]
-  # before_action :standings, only: [:index, :show]
+  before_action :standings, only: [:index, :show]
 
   def index
     @teams = Team.all
     Tweet.team_tweets
-    @standings = standings
+    # @standings = standings
   end
 
   def show
-    @standings = standings
+    # @standings = standings
     @team = Team.find params[:id]
     @tweets = team_official_timeline_tweets(@team)
     @tweets_mentions = team_tweets_for_stream(@team)
@@ -30,6 +30,10 @@ class TeamsController < ApplicationController
     end
   end
 
+  def standings
+    @standings = HTTParty.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_API']}&comp_id=1204")
+  end
+
   def team_official_timeline_tweets(team)
     tweets = []
     set_twitter_client.user_timeline(team.tweetstream_id).each { |tweet| tweets << tweet  }
@@ -42,11 +46,6 @@ class TeamsController < ApplicationController
 
   def team_banner(team)
     set_twitter_client.profile_banner(team.tweetstream_id).attrs[:sizes][:web][:url]
-  end
-
-  def standings
-    teams_standings = HTTParty.get("http://football-api.com/api/?Action=standings&APIKey=#{ENV['FOOTBALL_API']}&comp_id=1204")
-
   end
 
 end

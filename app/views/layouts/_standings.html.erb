@@ -23,8 +23,9 @@
           <tr class="standing-table__row">
           <td class="standing-table__cell"><%= i["stand_position"] %></td>
           <td class="standing-table__cell standing-table__cell--name" >
+            <%= link_to "#{i["stand_team_name"] }", "/teams/#{Team.get_link_for_team(i["stand_team_name"])}" %>
 
-                    <a href="/chelsea" class="standing-table__cell"><%= i["stand_team_name"] %></a>
+                    <!-- <a href="/teams/"<%= %> class="standing-table__cell"><%= i["stand_team_name"] %></a> -->
             
           </td>
           <td class="standing-table__cell"><%= i["stand_overall_gp"] %></td>

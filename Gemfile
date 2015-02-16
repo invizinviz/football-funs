@@ -9,7 +9,7 @@ gem 'httparty'
 
 # gem "private_pub"
 # gem 'redis'
-# gem 'tweetstream'
+ gem 'tweetstream'
 #gem 'yajl-ruby', require: 'yajl'
 # gem 'instagram'
 
