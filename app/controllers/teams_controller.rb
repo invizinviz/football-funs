@@ -13,7 +13,9 @@ class TeamsController < ApplicationController
     @team = Team.find params[:id]
     @tweets = team_official_timeline_tweets(@team)
     @tweets_mentions = team_tweets_for_stream(@team)
-    @imgs = @team.instagram_images
+    if @team.name != "EVERTON"
+      @imgs = @team.instagram_images
+    end
     @banner = team_banner(@team)
   end
 

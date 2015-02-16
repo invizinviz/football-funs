@@ -17,15 +17,17 @@
 </div>
 
 <div id="instagram" class="col-sm-12">
-  <% @imgs.each do |img| %>
-  <div class="thumbnail">
-    <%= image_tag img[:url], class: "img img-responsive " %>
-    <div class="caption">
-      <p>likes: <%= img[:likes] %></p>
-      <p>comments: <%= img[:comments] %></p>
+  <% if @team.name != "EVERTON" %>
+    <% @imgs.each do |img| %>
+    <div class="thumbnail">
+      <%= image_tag img[:url], class: "img img-responsive " %>
+      <div class="caption">
+        <p>likes: <%= img[:likes] %></p>
+        <p>comments: <%= img[:comments] %></p>
+      </div>
     </div>
-  </div>
-  <% end %>
+    <% end %>
+ <% end %>
 </div>
 <div id="twitter" class="col-sm-12">
   <ul class="media-list">
