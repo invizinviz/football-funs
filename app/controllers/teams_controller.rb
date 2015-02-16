@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   # before_action :set_twitter_client, only: [:team_official_timeline_tweets, :team_tweets_for_stream]
+  # before_action :standings, only: [:index, :show]
 
   def index
     @teams = Team.all
@@ -8,6 +9,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @standings = standings
     @team = Team.find params[:id]
     @tweets = team_official_timeline_tweets(@team)
     @tweets_mentions = team_tweets_for_stream(@team)

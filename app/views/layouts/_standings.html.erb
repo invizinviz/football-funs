@@ -1,0 +1,44 @@
+<div class="standing-table">
+  <table class="standing-table__table">
+    <caption class="standing-table_caption">
+        Barclays Premier League 2014/15  </caption>
+    <thead>
+        <tr class="standing-table__row">
+          <th class="standing-table__cell standing-table__header-cell" title="Position" data-label="pos" data-index="0">#</th>
+          <th class="standing-table__cell standing-table__header-cell standing-table__cell--name" title="Team" data-index="1">Team</th>
+          <th class="standing-table__cell standing-table__header-cell" title="Played" data-label="pld" data-index="2">Pl</th>
+          <th class="standing-table__cell standing-table__header-cell is-hidden--bp35" title="Won" data-label="w" data-index="3">W</th>
+          <th class="standing-table__cell standing-table__header-cell is-hidden--bp35" data-label="d" data-index="4">D</th>
+          <th class="standing-table__cell standing-table__header-cell is-hidden--bp35" data-label="l" data-index="5">L</th>
+          <th class="standing-table__cell standing-table__header-cell is-hidden--bp35" data-label="f" data-index="6">F</th>
+          <th class="standing-table__cell standing-table__header-cell is-hidden--bp35" data-label="a" data-index="7">A</th>
+          <th class="standing-table__cell standing-table__header-cell" data-label="gd" data-index="8">GD</th>
+          <th class="standing-table__cell standing-table__header-cell" data-label="pts" data-sort-value="use-attribute" data-index="9">Pts</th>
+        </tr>
+      </thead>
+    <tbody>
+
+      <% @standings["teams"].each do |i| %>
+
+          <tr class="standing-table__row">
+          <td class="standing-table__cell"><%= i["stand_position"] %></td>
+          <td class="standing-table__cell standing-table__cell--name" >
+
+                    <a href="/chelsea" class="standing-table__cell"><%= i["stand_team_name"] %></a>
+            
+          </td>
+          <td class="standing-table__cell"><%= i["stand_overall_gp"] %></td>
+          <td class="standing-table__cell"><%= i["stand_overall_w"] %></td>
+          <td class="standing-table__cell"><%= i["stand_overall_d"] %></td>
+          <td class="standing-table__cell"><%= i["stand_overall_l"] %></td>
+          <td class="standing-table__cell"><%= i["stand_overall_gs"] %></td>
+          <td class="standing-table__cell"><%= i["stand_overall_ga"] %></td>
+          <td class="standing-table__cell"><%= i["stand_gd"] %></td>
+          <td class="standing-table__cell"><%= i["stand_points"] %></td>
+
+      <% end %>
+ 
+      </tbody>
+    
+  </table>
+</div>
