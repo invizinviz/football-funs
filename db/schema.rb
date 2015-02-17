@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211204127) do
+ActiveRecord::Schema.define(version: 20150217132313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150211204127) do
     t.string   "twitter"
     t.integer  "instagram_id"
     t.string   "instagram_name"
+    t.string   "twitter_banner"
   end
 
   create_table "tweets", force: :cascade do |t|

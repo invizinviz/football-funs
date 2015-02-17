@@ -17,7 +17,7 @@ class TeamsController < ApplicationController
     if @team.name != "EVERTON"
       @imgs = @team.instagram_images
     end
-    @banner = team_banner(@team)
+    # @banner = team_banner(@team)
   end
 
 

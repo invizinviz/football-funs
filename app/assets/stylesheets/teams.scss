@@ -58,13 +58,15 @@
   text-decoration: none;
 }
 // ///////////////////
+
 .jumbotron {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   width: 100%;
-  height: 100%;
+  // height: ;
   color: white;
+  padding: 0;
 }
 
 #instagram {
@@ -130,4 +132,17 @@
   #likes-comments {
     display: block;
   }  
+}
+.carousel {
+  margin-top: auto;
+  margin-bottom: auto;
+  // width: 70%;
+}
+
+.text-center {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.5);
+  padding-top: 80px;
 }
