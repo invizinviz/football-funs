@@ -3,6 +3,7 @@
 <head>
   <title>FootballFansApp</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag "hover-min.css", media: "all" %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag "jquery.twitter.autolink.js" %>
   <%= javascript_include_tag 'http://localhost:9292/faye/faye.js'%>
@@ -16,6 +17,7 @@
     </div>
     <div id="stream" class='col-sm-6 col-xs-12'>
       <%= yield %>
+  
     </div>
     <div class='col-sm-3 hidden-xs'>
       <%= render "layouts/standings" %>

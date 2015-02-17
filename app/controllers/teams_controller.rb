@@ -1,11 +1,13 @@
 class TeamsController < ApplicationController
   # before_action :set_twitter_client, only: [:team_official_timeline_tweets, :team_tweets_for_stream]
   before_action :standings, only: [:index, :show]
+  before_action :set_teams
+
 
   def index
-    @teams = Team.all
+    # @teams = Team.all
     Tweet.team_tweets
-
+    # @banners = teams_banners(@teams)
   end
 
   def show
@@ -20,6 +22,10 @@ class TeamsController < ApplicationController
 
 
   private 
+  def set_teams
+    @teams = Team.all
+  end
+
   def set_twitter_client
     Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['FOOTBALL_CUSTOMER_TW_KEY']
@@ -45,6 +51,13 @@ class TeamsController < ApplicationController
 
   def team_banner(team)
     set_twitter_client.profile_banner(team.tweetstream_id).attrs[:sizes][:web][:url]
+  end
+
+  def teams_banners(teams)
+    banners = []
+    teams.all.each do |team|
+      banners << team_banner(team)
+    end
   end
 
 end
