@@ -1,13 +1,16 @@
 class Tweet < ActiveRecord::Base
   belongs_to :team
-  @@faye_client = Faye::Client.new('http://localhost:9292/faye')
+  @@faye_client = Faye::Client.new('http://172.31.10.247:8000')
   @@twitter_client = Twitter::Streaming::Client.new do |config|
     config.consumer_key        = ENV['FOOTBALL_CUSTOMER_TW_KEY']
     config.consumer_secret     = ENV['FOOTBALL_CUSTOMER_TW_SECRET_KEY']
     config.access_token        = ENV['FOOTBALL_ACCESS_TOKEN']
     config.access_token_secret = ENV['FOOBALL_ACCESS_TOKEN_SECRET']
   end
-
+	#Pusher.app_id = 'PUSHER_APP_ID'
+	#Pusher.key = 'PUSHER_APP_KEY'
+	#Pusher.secret = 'PUSHER_APP_SECRET'  
+	Pusher.url = "http://02abdbfcfa5036ae29ec:80af1fa26a84c90bc533@api.pusherapp.com/apps/107665"
   def self.team_tweets
     twitter_handles = Team.pluck(:twitter) << "premierleague"
     
@@ -16,7 +19,9 @@ class Tweet < ActiveRecord::Base
         puts "tweet: #{tweet.text}"
         twitter_handles.each do |handle|
           if tweet.text.include?(handle)
-            @@faye_client.publish("/tweets/#{handle}", tweet)
+		Pusher[handle].trigger('my_event', tweet)
+		#Pusher.trigger("#{handle}", 'my-event', tweet)
+            #@@faye_client.publish("/tweets/#{handle}", tweet)
             puts "published to #{handle}"
           end
         end

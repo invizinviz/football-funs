@@ -2,5 +2,3 @@
 Sport for Social Fans
 helps fans keep track of the social activity of their team in social networks (Twitter, Instagram)
 
-rackup faye.ru -s thin -E production
-rails s

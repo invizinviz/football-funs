@@ -4,6 +4,8 @@ gem 'faye-rails', '~> 2.0'
 gem 'thin'
 gem 'twitter', '>= 5.14.0'
 gem 'httparty'
+gem 'pusher'
+gem "font-awesome-rails"
 
 #gem 'twitter-text'
 
