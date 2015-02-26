@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  # before_action :set_twitter_client, only: [:team_official_timeline_tweets, :team_tweets_for_stream]
+
   before_action :standings
   before_action :set_teams
 
@@ -13,6 +13,7 @@ class TeamsController < ApplicationController
   def index
     # @teams = Team.all
     Tweet.team_tweets
+    
     @teams.each do |team|
       url = URI(team.twitter_banner)
       res = Net::HTTP.get_response(url)
