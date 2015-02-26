@@ -51,7 +51,6 @@ class TeamsController < ApplicationController
 
   def team_banner(team)
     set_twitter_client.profile_banner(team.tweetstream_id).attrs[:sizes][:web_retina][:url]
-    raise
   end
 
   def teams_banners(teams)
