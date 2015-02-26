@@ -1,7 +1,13 @@
 class TeamsController < ApplicationController
   # before_action :set_twitter_client, only: [:team_official_timeline_tweets, :team_tweets_for_stream]
   before_action :standings, only: [:index, :show]
-  before_action :set_teams
+  before_action :set_teams, only: [:index, :show]
+
+  def about
+  end
+
+  def scheme
+  end
 
 
   def index

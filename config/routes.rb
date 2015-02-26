@@ -2,14 +2,17 @@ Rails.application.routes.draw do
   # get 'teams/index'
   # get 'chelsea' => 'teams#chelsea'
   # get 'arsenal' => 'teams#arsenal'
+  root 'teams#index'
+  get 'about' => 'teams#about'
+  get 'scheme' => 'teams#scheme'
+  resources :teams, except: [:destroy, :edit, :update, :create, :new]
 
-  resources :teams, except: [:destroy, :edit, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'teams#index'
+ 
 
 
   # Example of regular route:

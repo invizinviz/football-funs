@@ -7,28 +7,31 @@ class Tweet < ActiveRecord::Base
     config.access_token        = ENV['FOOTBALL_ACCESS_TOKEN']
     config.access_token_secret = ENV['FOOBALL_ACCESS_TOKEN_SECRET']
   end
+
+
 	#Pusher.app_id = 'PUSHER_APP_ID'
 	#Pusher.key = 'PUSHER_APP_KEY'
-	#Pusher.secret = 'PUSHER_APP_SECRET'  
+	#Pusher.secret = 'PUSHER_APP_SECRET'
+
+
 	Pusher.url = "http://02abdbfcfa5036ae29ec:80af1fa26a84c90bc533@api.pusherapp.com/apps/107665"
+
+
   def self.team_tweets
     twitter_handles = Team.pluck(:twitter) << "premierleague"
     
     Thread.new do 
       @@twitter_client.filter(track: twitter_handles.join(","), language: "en") do |tweet|
-        puts "tweet: #{tweet.text}"
+        # puts "tweet: #{tweet.text}"
         twitter_handles.each do |handle|
           if tweet.text.include?(handle)
-		Pusher[handle].trigger('my_event', tweet)
-		#Pusher.trigger("#{handle}", 'my-event', tweet)
-            #@@faye_client.publish("/tweets/#{handle}", tweet)
+		        Pusher[handle].trigger('my_event', tweet)
             puts "published to #{handle}"
           end
         end
       end
     end
+    
   end
 
 end
-
-# curl http://localhost:9292/faye -d 'message={"channel":"messages/new", "data":"hello"}'
