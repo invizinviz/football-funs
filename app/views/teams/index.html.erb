@@ -1,12 +1,11 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
+  
   <ol class="carousel-indicators">
     <% @teams.each_with_index do |team, i| %>
       <li data-target="#carousel-example-generic" data-slide-to="<%= 'i' %>" class="<%= "active" if i==0 %>"></li>
     <% end %>
   </ol>
 
-  <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <% @teams.each_with_index do |team, i| %>
       <div class="item <%= "active" if i==0 %>">
@@ -18,7 +17,6 @@
     <% end %>
   </div>
 
-  <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 
     <span class="sr-only">Previous</span>
