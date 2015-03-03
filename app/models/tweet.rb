@@ -10,7 +10,6 @@ class Tweet < ActiveRecord::Base
     user.twitter.update(body)
   end
   
-  # @@faye_client = Faye::Client.new('http://172.31.10.247:8000')
   @@twitter_client ||= Twitter::Streaming::Client.new do |config|
     config.consumer_key        = ENV['FOOTBALL_CUSTOMER_TW_KEY']
     config.consumer_secret     = ENV['FOOTBALL_CUSTOMER_TW_SECRET_KEY']
@@ -32,7 +31,7 @@ class Tweet < ActiveRecord::Base
       @@twitter_client.filter(track: twitter_handles.join(","), language: "en") do |tweet|
         twitter_handles.each do |handle|
           if tweet.text.include?(handle)
-		        Pusher[handle].trigger('my_event', tweet)
+		        Pusher.trigger(handle, 'my_event', tweet)
             puts "published to #{handle}"
           end
         end

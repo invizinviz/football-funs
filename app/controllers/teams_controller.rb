@@ -11,13 +11,8 @@ class TeamsController < ApplicationController
 
 
   def index
-    # @teams = Team.all
-
-    Tweet.team_tweets
+    # Tweet.team_tweets
     # update_banners
-
-
-    # @banners = teams_banners(@teams)
   end
 
   def show
@@ -27,7 +22,6 @@ class TeamsController < ApplicationController
     if @team.name != "EVERTON"
       @imgs = @team.instagram_images
     end
-    # @banner = team_banner(@team)
   end
 
   def create_tweet
@@ -82,8 +76,7 @@ class TeamsController < ApplicationController
         team.twitter_banner = team_banner(team)
         team.save
       end
-    end
-    
+    end   
   end
 
 end
