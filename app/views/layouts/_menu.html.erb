@@ -27,13 +27,16 @@
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "About", about_path %></li>
           <li><%#= link_to "Scheme", scheme_path %></li>
-          
-          <% if current_user %>
-            <p>Signed as</p>
-            <li><%= current_user.name %></li>
+          <li>
+            <% if current_user %>
+              Signed as: 
+              <%= current_user.name %>
+              <%= link_to "Logout", logout_path %>
             <% else %>
-            <a href="auth/twitter">Login</a>
-          <% end %>
+              <%= link_to "Login", "/auth/twitter" %>
+              <!-- <a href="auth/twitter">Login</a> -->
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>

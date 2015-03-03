@@ -12,18 +12,11 @@ class TeamsController < ApplicationController
 
   def index
     # @teams = Team.all
-    Tweet.team_tweets
-    
-    # @teams.each do |team|
-    #   url = URI(team.twitter_banner)
-    #   res = Net::HTTP.get_response(url)
-    #   if res.code == "404"
-    #     team.twitter_banner = team_banner(team)
-    #     team.save
-    #   end
-    # end
 
-    
+    Tweet.team_tweets
+    # update_banners
+
+
     # @banners = teams_banners(@teams)
   end
 
@@ -79,6 +72,18 @@ class TeamsController < ApplicationController
     teams.all.each do |team|
       banners << team_banner(team)
     end
+  end
+
+  def update_banners
+    @teams.each do |team|
+      url = URI(team.twitter_banner)
+      res = Net::HTTP.get_response(url)
+      if res.code == "404"
+        team.twitter_banner = team_banner(team)
+        team.save
+      end
+    end
+    
   end
 
 end
