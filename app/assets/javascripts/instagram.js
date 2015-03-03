@@ -1,7 +1,11 @@
 $(function(){
-  $('#toggle-instagram, #toggle-official-twitter').on('click', function(){
-    $('#instagram').show("slow");
-    $('#twitter').show  ("slow");
-  });
+  // $('#toggle-instagram, #toggle-official-twitter').on('click', function(){
+  //   $('#instagram').toggle("slow");
+  //   $('#twitter').toggle("slow");
+  // });
+
+// $('#toggle-instagram').click(function(){
+//   $('#instagram').toggle();
+// });
 
 });

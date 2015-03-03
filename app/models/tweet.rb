@@ -1,7 +1,17 @@
 class Tweet < ActiveRecord::Base
   belongs_to :team
+  belongs_to :user
+
+  validates :user_id, :body, presence: true
+
+  before_create :post_to_twitter
+
+  def post_to_twitter
+    user.twitter.update(body)
+  end
+  
   # @@faye_client = Faye::Client.new('http://172.31.10.247:8000')
-  @@twitter_client = Twitter::Streaming::Client.new do |config|
+  @@twitter_client ||= Twitter::Streaming::Client.new do |config|
     config.consumer_key        = ENV['FOOTBALL_CUSTOMER_TW_KEY']
     config.consumer_secret     = ENV['FOOTBALL_CUSTOMER_TW_SECRET_KEY']
     config.access_token        = ENV['FOOTBALL_ACCESS_TOKEN']

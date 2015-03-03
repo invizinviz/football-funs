@@ -14,14 +14,16 @@ class TeamsController < ApplicationController
     # @teams = Team.all
     Tweet.team_tweets
     
-    @teams.each do |team|
-      url = URI(team.twitter_banner)
-      res = Net::HTTP.get_response(url)
-      if res.code == "404"
-        team.twitter_banner = team_banner(team)
-        team.save
-      end
-    end
+    # @teams.each do |team|
+    #   url = URI(team.twitter_banner)
+    #   res = Net::HTTP.get_response(url)
+    #   if res.code == "404"
+    #     team.twitter_banner = team_banner(team)
+    #     team.save
+    #   end
+    # end
+
+    
     # @banners = teams_banners(@teams)
   end
 
@@ -33,6 +35,10 @@ class TeamsController < ApplicationController
       @imgs = @team.instagram_images
     end
     # @banner = team_banner(@team)
+  end
+
+  def create_tweet
+    @tweet.user_id = current_user.id
   end
 
 
