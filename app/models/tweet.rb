@@ -31,7 +31,7 @@ class Tweet < ActiveRecord::Base
       @@twitter_client.filter(track: twitter_handles.join(","), language: "en") do |tweet|
         twitter_handles.each do |handle|
           if tweet.text.include?(handle)
-		        Pusher.trigger(handle, 'my_event', tweet)
+		        Pusher[handle].trigger('my_event', tweet)
             puts "published to #{handle}"
           end
         end

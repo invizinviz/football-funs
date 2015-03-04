@@ -4,6 +4,7 @@ class TeamsController < ApplicationController
   before_action :set_teams
 
   def about
+    Tweet.team_tweets
   end
 
   def scheme
@@ -16,6 +17,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    # Tweet.team_tweets
     @team = Team.find params[:id]
     @tweets = team_official_timeline_tweets(@team)
     @tweets_mentions = team_tweets_for_stream(@team)
