@@ -49,19 +49,21 @@
 #show-teams a:active {
   text-decoration: none;
 }
-// ///////////////////
 
 .jumbotron {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   width: 100%;
-  // height: ;
   color: white;
   padding: 0;
 }
 
 #instagram {
+  display: none;
+}
+
+#send-tweet{
   display: none;
 }
 
@@ -105,7 +107,6 @@
   height: 350px;
   padding: 20px;
   position: center;
-  // padding-left: 100px;
   margin-left: auto;
   margin-right: auto;
 }
