@@ -8,13 +8,25 @@
       <h3 class='lead'>Official  <%= link_to "Instagram", "http://instagram.com/#{@team.instagram_name}" %> <%= @team.name %></h3>
       <h3 class='lead'>Official <%= link_to "Twitter", "https://twitter.com/#{@team.twitter}" %> <%= @team.name %> </h3>
       <div class="btn-group" role="group">
-        <button id="toggle-twitter" type="button" class="btn btn-default"> Live Twitter <span>0</span></button>
+ 
         <button id="toggle-official-twitter" type="button" class="btn btn-default"> Twitter - Instagram </button>
+        <!-- <button id="toggle-official-instagram" type="button" class="btn btn-default"> Instagram </button> -->
+        <% if current_user.present? %>
+          <button id="toggle-twitter" type="button" class="btn btn-default"> Live Twitter <span>0</span></button> 
+          <%#= button_to "New Tweet", new_tweet_path,  id: "toggle-twitter", class: "btn btn-default", method: :get %>
+        <% end %>
  
       </div>
     </div>
   </div>
 </div>
 
+<div id="send-tweet" class="col-sm-12">
+  <%= render "/tweets/form" %>
+
+</div>
+
+
 <%= render "instagram" %>
 <%= render "twitter" %>
+

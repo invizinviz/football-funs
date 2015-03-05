@@ -17,17 +17,19 @@ class TeamsController < ApplicationController
   end
 
   def show
-    # Tweet.team_tweets
     @team = Team.find params[:id]
     @tweets = team_official_timeline_tweets(@team)
     @tweets_mentions = team_tweets_for_stream(@team)
     if @team.name != "EVERTON"
       @imgs = @team.instagram_images
     end
+    @tweet = Tweet.new
   end
 
-  def create_tweet
+  def tweet_create
+    @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
+    @tweet.save
   end
 
 
@@ -79,6 +81,10 @@ class TeamsController < ApplicationController
         team.save
       end
     end   
+  end
+  
+  def tweet_params
+    params.require(:tweet).permit(:message)
   end
 
 end

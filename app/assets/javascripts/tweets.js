@@ -1,8 +1,6 @@
 $(function(){
   var channel = $('body').data('channel');
 
-  // var clientSubscribe = new Faye.Client('http://54.194.244.14:8000/faye');
-
 	var pusher = new Pusher('02abdbfcfa5036ae29ec');
 
 	var pChannel = pusher.subscribe(channel);

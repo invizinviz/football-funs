@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     #look up the user or create new 
     user = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
     user.update(
-      name: auth_hash.info.name,
+      name: auth_hash.info.nickname,
       profile_image: auth_hash.info.image,
       token: auth_hash.credentials.token,
       secret: auth_hash.credentials.secret
@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
 
   def twitter
     @tw_client ||= Twitter::REST::Client.new do |config|
-      config.consumer_key        = Rails.application.secrets.twitter_api_key
-      config.consumer_secret     = Rails.application.secrets.twitter_api_secret
+      config.consumer_key        = ENV['LOGIN_TWITTER_KEY']
+      config.consumer_secret     = ENV['LOGIN_TWITTER_SECRET']
       config.access_token        = token
       config.access_token_secret = secret
     end

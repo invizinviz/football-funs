@@ -2,12 +2,12 @@ class Tweet < ActiveRecord::Base
   belongs_to :team
   belongs_to :user
 
-  validates :user_id, :body, presence: true
+  validates :user_id, :message, presence: true
 
   before_create :post_to_twitter
 
   def post_to_twitter
-    user.twitter.update(body)
+    user.twitter.update(message)
   end
   
   @@twitter_client ||= Twitter::Streaming::Client.new do |config|
@@ -16,10 +16,6 @@ class Tweet < ActiveRecord::Base
     config.access_token        = ENV['FOOTBALL_ACCESS_TOKEN']
     config.access_token_secret = ENV['FOOBALL_ACCESS_TOKEN_SECRET']
   end
-
-	#Pusher.app_id = 'PUSHER_APP_ID'
-	#Pusher.key = 'PUSHER_APP_KEY'
-	#Pusher.secret = 'PUSHER_APP_SECRET'
 
 	Pusher.url = "http://02abdbfcfa5036ae29ec:80af1fa26a84c90bc533@api.pusherapp.com/apps/107665"
 
@@ -32,7 +28,10 @@ class Tweet < ActiveRecord::Base
         twitter_handles.each do |handle|
           if tweet.text.include?(handle)
 		        Pusher[handle].trigger('my_event', tweet)
+            puts "\n"
+            puts tweet.text
             puts "published to #{handle}"
+            puts "\n"
           end
         end
       end
