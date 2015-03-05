@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   before_action :set_teams
 
   def about
-    Tweet.team_tweets
+    # Tweet.team_tweets
   end
 
   def scheme
@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
 
   def index
     # Tweet.team_tweets
-    # update_banners
+    update_banners
   end
 
   def show
