@@ -27,14 +27,15 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
+    @team = Team.find(params[:tweet][:team_id])
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
-        format.json { render :show, status: :created, location: @tweet }
+        format.html { redirect_to @team, notice: 'Tweet was successfully created.' }
+        # format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
+        # format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end
   end

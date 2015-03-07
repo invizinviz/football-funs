@@ -13,9 +13,10 @@
 
   <div class="field">
     <%= f.label :message %><br>
-    <%= f.text_area :message, value: "@#{@team.twitter}" %>
+    <%= f.text_area :message, value: "@#{@team.twitter}", :size => "50x5", maxlength: 140  %>
+    <%= f.hidden_field :team_id, value: "#{@team.id}"  %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Tweet" %>
   </div>
 <% end %>
