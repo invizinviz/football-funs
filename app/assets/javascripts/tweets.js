@@ -22,13 +22,7 @@ $(function(){
 
     if(counter > MAX_TWEETS_DISPLAYED) {
       $("#tweet-list li:last-child").remove();
-      // console.log(counter);
-    } else {
-        counter++;
-        // console.log("else: " + counter);
-    }
-    
-    // console.log(counter);
+    } else counter++;
 
   });
 
